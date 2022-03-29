@@ -12,7 +12,7 @@ public interface LikeService {
 
     List<Like> getLikes(String postOrCommentId);
     Like createLike(String postOrCommentId, LikeRequest likeRequest);
-    LikeDto getLikeDetails(String likeId);
-    Like removeLike(String likeId);
-    Long getLikesCount(String postOrCommentId);
+    LikeDto getLikeDetails(String postOrCommentId, String likeId);
+    Integer getLikesCount(String postOrCommentId);
+    String deleteLike(String likeId);
 }

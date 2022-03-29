@@ -17,5 +17,6 @@ public class LikeDto {
     private String likedBy;
     private Date localDate;
     private String userName;
+    private String post;
 }
 
