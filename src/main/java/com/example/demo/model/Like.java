@@ -16,9 +16,8 @@ import java.time.LocalDate;
 public class Like {
     @Id
     private String id;
-    private String pcId;
-    private String likedBy;
-    private LocalDate localDate;
+    private String pcId; //id can be postId or commentId
+    private String likedBy; //a particular userId
+    private LocalDate createdAt;
 
-    private String userName;
 }

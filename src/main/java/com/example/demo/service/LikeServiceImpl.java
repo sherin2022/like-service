@@ -10,10 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import static com.example.demo.constant.LikeConstant.deleteLike;
 
@@ -31,13 +28,23 @@ public class LikeServiceImpl implements LikeService {
     }
 
     @Override
-    public Like createLike(String postOrCommentId, LikeRequest likeRequest) {
+   /* public Like createLike(String postOrCommentId, LikeRequest likeRequest) {
         Like like = new Like();
         like.setPcId(likeRequest.getPostOrCommentId());
         like.setLikedBy(likeRequest.getLikedBy());
         like.setLocalDate(LocalDate.now());
         return likeRepo.save(like);
+    }*/
+    public Like createLike(String postOrCommentId, LikeRequest likeRequest) {
+        Like like = new Like();
+        like.setPcId(postOrCommentId);
+        like.setLikedBy(likeRequest.getLikedBy());
+
+        like.setCreatedAt(LocalDate.now());
+        return likeRepo.save(like);
+
     }
+
 
 
     public LikeDto getLikeDetails(String postOrCommentId, String likeId) {
@@ -45,12 +52,19 @@ public class LikeServiceImpl implements LikeService {
 
         if (li.isPresent()) {
             Like like = li.get();
-          //  String userName = userFeign.getUserById(like.getLikedBy()).getBody().getFirstName();
-          //  String userName = userFeign.getUserById(like.getUserName());
-           // like.setLikedBy(userName);
-           // return new LikeDto(like.getId(), like.getPcId(), userFeign.getUserById(like.getLikedBy()).getBody().getFirstName(), like.getLocalDate());
-            return new LikeDto(like.getId(),like.getPcId(),like.getLikedBy(),like.getLocalDate(),like.getUserName());
-        } else {
+           // String userName = userFeign.getUserById(like.getLikedBy()).getBody().getFirstName();
+           // String userName = userFeign.getUserById(like.getUserName());
+          //  like.setLikedBy(userName);
+          return new LikeDto(like.getId(), like.getPcId(), userFeign.getUserById(like.getLikedBy()), like.getCreatedAt());
+
+
+          //return new LikeDto(like.getId(),like.getPcId(),like.getLikedBy(),like.getCreatedAt(),like.getUserName());
+        }
+        /*try {
+            Like like = likeRepo.findByPcIdAndId(postOrCommentId, likeId);
+            return new LikeDto(like.getId(), like.getPcId(), userFeign.getUserById(like.getLikedBy()), like.getCreatedAt());
+        }*/
+        else {
             throw new LikeNotFoundException("No like found : " + likeId);
         }
     }
