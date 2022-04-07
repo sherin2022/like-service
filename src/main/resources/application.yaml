@@ -4,6 +4,7 @@ eureka:
       defaultZone: "${EUREKA_URI:http://localhost:8761/eureka}"
   instance:
     preferIpAddress: true
+    hostname: localhost
 server:
   error:
     include-message: always

@@ -18,12 +18,12 @@ public class LikeController {
     LikeService likeService;
 
     @GetMapping("/{postOrCommentId}/likes")
-    public ResponseEntity<List<Like>> getLikes(@PathVariable("postOrCommentId") String postOrCommentId){
+    public ResponseEntity<List<LikeDto>> getLikes(@PathVariable("postOrCommentId") String postOrCommentId){
         return new ResponseEntity<>(likeService.getLikes(postOrCommentId), HttpStatus.OK);
     }
 
     @PostMapping("/{postOrCommentId}/likes")
-    public ResponseEntity<Like> createLike(@PathVariable("postOrCommentId") String postOrCommentId,@RequestBody LikeRequest likeRequest){
+    public ResponseEntity<LikeDto> createLike(@PathVariable("postOrCommentId") String postOrCommentId,@RequestBody LikeRequest likeRequest){
         return new ResponseEntity<>(likeService.createLike(postOrCommentId,likeRequest), HttpStatus.CREATED);
     }
 
