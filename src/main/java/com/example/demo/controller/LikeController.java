@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.LikeDto;
 import com.example.demo.dto.LikeRequest;
-import com.example.demo.model.Like;
 import com.example.demo.service.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

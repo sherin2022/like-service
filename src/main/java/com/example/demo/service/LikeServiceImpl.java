@@ -7,18 +7,13 @@ import com.example.demo.feign.UserFeign;
 import com.example.demo.model.Like;
 import com.example.demo.repo.LikeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
 import static com.example.demo.constant.LikeConstant.LIKE_DELETED;
 
 
@@ -45,7 +40,7 @@ public class LikeServiceImpl implements LikeService {
         List<Like> listOfLikes = mongoTemplate.find(query, Like.class);
         List<LikeDto> likesDto = new ArrayList<>();
         for(Like like:listOfLikes){
-            LikeDto likeDto= new LikeDto(like.getLikeId(),like.getPostOrCommentId(),userFeign.getUserById(like.getLikedBy()),like.getCreatedAt());
+            LikeDto likeDto= new LikeDto(like.getLikeId(),like.getPostOrCommentId(),userFeign.getUserDetails(like.getLikedBy()),like.getCreatedAt());
             likesDto.add(likeDto);
         }
         return likesDto;
@@ -58,17 +53,15 @@ public class LikeServiceImpl implements LikeService {
         like.setLikedBy(likeRequest.getLikedBy());
         like.setCreatedAt(new Date());
         likeRepo.save(like);
-        LikeDto likeDto= new LikeDto(like.getLikeId(),like.getPostOrCommentId(),userFeign.getUserById(like.getLikedBy()),like.getCreatedAt());
-       return likeDto;
+        return new LikeDto(like.getLikeId(),like.getPostOrCommentId(),userFeign.getUserDetails(like.getLikedBy()),like.getCreatedAt());
+
     }
 
     @Override
     public LikeDto getLikeDetails(String postOrCommentId, String likeId) {
         Like like = likeRepo.findByLikeId(likeId);
-        String userName = userFeign.getUserById(like.getLikedBy()).getFirstName();
-        String post = postFeign.getPostDetails(postOrCommentId).getPost();
-        LikeDto likeDto = new LikeDto(like.getLikeId(),like.getPostOrCommentId(),userFeign.getUserById(like.getLikedBy()),like.getCreatedAt());
-        return likeDto;
+        return new LikeDto(like.getLikeId(),like.getPostOrCommentId(),userFeign.getUserDetails(like.getLikedBy()),like.getCreatedAt());
+
     }
 
     @Override
