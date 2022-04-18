@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.ws.rs.QueryParam;
 import java.util.List;
 
 
@@ -17,8 +19,8 @@ public class LikeController {
     LikeService likeService;
 
     @GetMapping("/{postOrCommentId}/likes")
-    public ResponseEntity<List<LikeDto>> getLikes(@PathVariable("postOrCommentId") String postOrCommentId){
-        return new ResponseEntity<>(likeService.getLikes(postOrCommentId), HttpStatus.OK);
+    public ResponseEntity<List<LikeDto>> getLikes(@PathVariable("postOrCommentId") String postOrCommentId, @QueryParam("page") Integer page, @QueryParam("pageSize") Integer pageSize) {
+        return new ResponseEntity<>(likeService.getLikes(postOrCommentId, page, pageSize), HttpStatus.OK);
     }
 
     @PostMapping("/{postOrCommentId}/likes")
@@ -30,11 +32,11 @@ public class LikeController {
     public ResponseEntity<Integer> getLikesCount(@PathVariable("postOrCommentId") String postOrCommentId){
         return new ResponseEntity<>(likeService.getLikesCount(postOrCommentId), HttpStatus.OK);
     }
-    @DeleteMapping("/{postOrCommentId}/likes/{likeId}")
-    public ResponseEntity<String> deleteCount(@PathVariable("likeId") String likeId){
-        return new ResponseEntity<>(likeService.deleteLike(likeId), HttpStatus.OK);
-    }
 
+    @DeleteMapping("/{postOrCommentId}/likes/{likeId}")
+    public ResponseEntity<LikeDto> removeLike(@PathVariable("postOrCommentId") String postOrCommentId, @PathVariable("likeId") String likeId) {
+        return new ResponseEntity<>(likeService.removeLike(postOrCommentId, likeId), HttpStatus.OK);
+    }
     @GetMapping("/{postOrCommentId}/likes/{likeId}")
     public ResponseEntity<LikeDto> getLikeDetails(@PathVariable("postOrCommentId") String postOrCommentId,@PathVariable("likeId") String likeId){
         return new ResponseEntity<>(likeService.getLikeDetails(postOrCommentId,likeId),HttpStatus.OK);

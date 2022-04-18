@@ -9,9 +9,14 @@ import java.util.List;
 @Service
 public interface LikeService {
 
-    List<LikeDto> getLikes(String postOrCommentId);
+   // List<LikeDto> getLikes(String postOrCommentId);
     LikeDto createLike(String postOrCommentId, LikeRequest likeRequest);
     LikeDto getLikeDetails(String postOrCommentId, String likeId);
     Integer getLikesCount(String postOrCommentId);
-    String deleteLike(String likeId);
+   // String removeLike(String likeId);
+
+    List<LikeDto> getLikes(String postOrCommentId, Integer page, Integer pageSize);
+
+    LikeDto removeLike(String postOrCommentId, String likeId);
+
 }

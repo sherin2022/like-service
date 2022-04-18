@@ -251,3 +251,19 @@
 2022-04-18 14:12:26.189  INFO 32544 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 2022-04-18 14:17:26.196  INFO 32544 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
 2022-04-18 14:22:26.203  INFO 32544 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-04-18 14:27:26.205  INFO 32544 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-04-18 14:32:26.209  INFO 32544 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-04-18 14:37:26.212  INFO 32544 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-04-18 14:42:26.219  INFO 32544 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-04-18 14:47:26.222  INFO 32544 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2022-04-18 14:51:58.318  INFO 32544 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application LIKE-SERVICE with eureka with status DOWN
+2022-04-18 14:51:58.318  INFO 32544 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1650273718318, current=DOWN, previous=UP]
+2022-04-18 14:51:58.319  INFO 32544 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_LIKE-SERVICE/MAVBNG1121239.mavericsystems.lan:like-service:3020: registering service...
+2022-04-18 14:51:58.337  INFO 32544 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_LIKE-SERVICE/MAVBNG1121239.mavericsystems.lan:like-service:3020 - registration status: 204
+2022-04-18 14:51:58.600  WARN 32544 --- [SpringApplicationShutdownHook] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2022-04-18 14:51:58.601  INFO 32544 --- [SpringApplicationShutdownHook] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2022-04-18 14:51:58.620  INFO 32544 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2022-04-18 14:52:01.623  WARN 32544 --- [DiscoveryClient-0] c.netflix.discovery.TimedSupervisorTask  : task supervisor shutting down, can't accept the task
+2022-04-18 14:52:01.624  INFO 32544 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2022-04-18 14:52:01.627  INFO 32544 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_LIKE-SERVICE/MAVBNG1121239.mavericsystems.lan:like-service:3020 - deregister  status: 200
+2022-04-18 14:52:01.633  INFO 32544 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient

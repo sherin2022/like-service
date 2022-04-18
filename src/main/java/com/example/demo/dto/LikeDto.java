@@ -13,7 +13,7 @@ public class LikeDto {
     private String id;
     private String postOrCommentId;
     private UserDto likedBy;
-    private Date localDate;
+    private Date createdAt;
 
 }
 

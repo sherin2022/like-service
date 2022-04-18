@@ -15,8 +15,8 @@ import java.util.Date;
 public class Like {
 
     @Id
-    private String likeId;
-    private String postOrCommentId; //id can be postId or commentId
+    private String id;
+    private String pcId; //id can be postId or commentId
     private String likedBy; //a particular userId
     private Date createdAt;
 
