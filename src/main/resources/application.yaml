@@ -19,3 +19,6 @@ spring:
     mongodb:
       database: likeDB
       port: 27017
+logging:
+  file:
+    name: C:/Users/savitago/Downloads/like-service/src/logs/like_service.log
